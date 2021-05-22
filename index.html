@@ -22,12 +22,6 @@
 <link rel="stylesheet" href="/public/css/desktop.css" type="text/css" />
 <link rel="stylesheet" href="/public/css/mobile.css" type="text/css" />
 <link rel="stylesheet" href="/public/css/no-script.css" type="text/css" />
-<style>
-
-
-
-
-</style>
 
 </head>
 <body>
@@ -101,10 +95,13 @@
               $('.title-icons-con').slideToggle("slow", function(){});
             });
 
+                //Move Babylonjs files addendum to here
+                  
             let js = document.createElement("script");
             js.type = "text/javascript";
             js.src = "public/js/background.js";
             $("body").append(js);
+                  
           } else {
             $(".mobile-con").toggle();
           }
