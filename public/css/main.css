@@ -1,0 +1,160 @@
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    background: #191919;
+    overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  display: inline-block;
+  top: 100vh;
+  height: 100%;
+  width:100%;
+  background: #333;
+  background: linear-gradient(to bottom, #333 66%,#bfbfbf 100%);
+  z-index: -1000;
+  animation: bg_slide 2s cubic-bezier(0.34, 0.99, 1, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes bg_slide {
+    0% {top: 100vh}
+    100% {top: 0vh}
+}
+
+.main-con {
+    position: relative;
+    text-align: center;
+}
+
+.main-con h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 100%;
+}
+
+.title-box {
+  position: absolute;
+  display: inline-block;
+  background-color: #666;
+  border-radius: 3px;
+  padding: 3px;
+  right: 10px;
+  bottom: 2000px;
+  user-select: none;
+  z-index: 100;
+  animation: title_move 3s cubic-bezier(0.05, 0.98, 0.36, 1);
+  animation-delay: 11s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes title_move {
+    0% {bottom: 2000px}
+    100% {bottom: 10px}
+}
+
+.title-hdr {
+  margin: 0 auto;
+  padding: 0 1px;
+  color: #fff;
+  font-family: 'Lobster', cursive;
+  font-size: 22px;
+  filter: drop-shadow(0px 2px 1px rgba(0,0,0,1));
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.05, 0.98, 0.36, 1);
+  z-index: 100;
+  text-align: center;
+  line-height: 16px;
+}
+
+.title-hdr:hover {
+  /* margin-top: 1px; */
+  filter: drop-shadow(0px 1px 0px rgba(0,0,0,.4));
+  /* line-height: 21px; */
+}
+
+/* .title-hdr:hover {
+  margin-top: 1px;
+  filter:
+          drop-shadow(0px -1px 0px #fff)
+          drop-shadow(0px 0px 1px rgba(0,0,0,.3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 22px;
+  color: #ba6156;
+  background-image: linear-gradient(to bottom, #ff9166 40%,#ba6156 75%);
+  overflow: visible !important;
+  z-index: 100;
+  line-height: 20px;
+} */
+
+.title-icons-con {
+  padding: 5px 0;
+  height: 42px;
+  background: black;
+  /* background: linear-gradient(to bottom, #333 66%,#bfbfbf 100%); */
+  border-radius: 3px;
+
+  background: linear-gradient(249deg, #245d66, #3ea639, #df933d, #df3da7, #df5b3d);
+  background-size: 1000% 1000%;
+
+  -webkit-animation: title-icons-bg-slider 33s ease infinite;
+  -moz-animation: title-icons-bg-slider 33s ease infinite;
+  animation: title-icons-bg-slider 33s ease infinite;
+}
+
+@-webkit-keyframes title-icons-bg-slider {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+@-moz-keyframes title-icons-bg-slider {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+@keyframes title-icons-bg-slider {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+
+.title-icons {
+  height: 100%;
+  display: flex;
+  text-align: center;
+}
+
+.title-icon-btn {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+.title-icon-btn:nth-child(odd):hover {
+  color: #43434f
+}
+.title-icon-btn:nth-child(even):hover {
+  color: #323e4f
+}
+
+.hidden {
+  display: none;
+}

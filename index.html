@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<!--
+        Design by Daniel Turner
+        ©2021
+-->
+<html>
+<head>
+<title>thedanielturner</title>
+<meta charset="UTF-8">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<!--[if lte IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>![endif]-->
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet" href="/public/css/main.css" type="text/css" />
+<link rel="stylesheet" href="/public/css/no-script.css" type="text/css" />
+<style>
+
+
+    .screen-con {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .screen-cover {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      background-color: rgba(0,0,0,0);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill='%23373737' d='M49.1,-56.6C63.9,-46,76.4,-30.9,82,-12.5C87.5,5.9,86.2,27.4,76.8,45.1C67.5,62.8,50.2,76.7,31,82.5C11.8,88.3,-9.4,86.1,-27.7,78.4C-46,70.7,-61.6,57.6,-70.8,41.1C-80.1,24.6,-83.1,4.7,-78.4,-12.4C-73.7,-29.6,-61.3,-43.9,-47,-54.6C-32.6,-65.3,-16.3,-72.3,0.4,-72.8C17.1,-73.3,34.3,-67.3,49.1,-56.6Z' transform='translate(100 100)'/%3e%3canimateTransform attributeName='transform' attributeType='XML' type='rotate' from='0 10 10' to='360 10 10' dur='25s' repeatCount='indefinite'/%3e%3c/svg%3e"),
+      radial-gradient(circle, #333 75%, #292929 100%);
+      background-position: center;
+      background-repeat: no-repeat;
+      -webkit-animation: canvas_reveal 5s linear;
+      -moz-animation: canvas_reveal 5s linear;
+      animation: canvas_reveal 5s linear;
+      animation-delay: 6s;
+      animation-fill-mode: forwards;
+      line-height: 100vh;
+      z-index: -400;
+    }
+
+    @-webkit-keyframes canvas_reveal {
+        0%{opacity:1;background-color: rgba(0,0,0,1)}
+        66#{opacity:1;background-color: rgba(0,0,0,1)}
+        100%{opacity:0;background-color: rgba(0,0,0,0)}
+    }
+
+    .screen-cover span {
+      font-family: 'Lobster', cursive;
+      font-size: 33px;
+      color: white;
+      -webkit-animation: canvas_reveal_text 3s linear;
+      -moz-animation: canvas_reveal_text 3s linear;
+      animation: canvas_reveal_text 3s linear;
+      animation-delay: 6s;
+      animation-fill-mode: forwards;
+    }
+
+    @-webkit-keyframes canvas_reveal_text {
+        0%{opacity:1;}
+        66#{opacity:1}
+        100%{opacity:0}
+    }
+
+    #screen {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      touch-action: none;
+      background-color: #191919;
+      z-index: -500;
+    }
+
+</style>
+
+</head>
+<body>
+    <span class="title-box">
+        <h1 class="title-hdr">daniel turner</h1>
+        <div class="title-icons-con hidden">
+          <div class="title-icons">
+            <a class="title-icon-btn col-sm" href="https://www.linkedin.com/in/thedanielturner/" target=”_blank”><i class="fab fa-linkedin fa-2x"></i></a>
+            <a class="title-icon-btn col-sm" href="https://github.com/GhandiJones" target=”_blank”><i class="fab fa-github-square fa-2x"></i></a>
+          </div>
+        </div>
+    </span>
+    <div class="main-con">
+      <noscript>
+         <div class="no-script-con">
+           <div class="no-script-body">
+             <div class="no-script-header"><span>daniel turner</span></div>
+             <div class="no-script-content">
+               <div class="no-script-message">Your browser does not support Javascript.<br>Please enable to enjoy the content.</div>
+               <div class="no-script-icons">
+                 <a class="no-script-icon" href="https://www.linkedin.com/in/thedanielturner/" target=”_blank”><i class="fab fa-linkedin fa-2x"></i></a>
+                 <a class="no-script-icon" href="https://github.com/GhandiJones" target=”_blank”><i class="fab fa-github-square fa-2x"></i></a>
+               </div>
+             </div>
+           </div>
+         </div>
+      </noscript>
+      <div class="screen-con">
+        <div class="screen-cover"><span>Loading...</span></div>
+        <canvas id="screen" touch-action="none"></canvas>
+      </div>
+      <!-- <div class="bg"></div> -->
+    </div>
+
+    <script type="text/javascript">
+      // Notice how this gets configured before we load Font Awesome
+      window.FontAwesomeConfig = { autoReplaceSvg: false }
+    </script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Babylon.js -->
+    <script src="https://cdn.babylonjs.com/babylon.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
+
+    <script>
+      (function($){
+        $(document).ready(function(){
+
+          $('.title-hdr').click(function(){
+            $('.title-icons-con').slideToggle("slow", function(){});
+          });
+
+
+
+
+          const canvas = document.getElementById("screen"); // Get the canvas element
+          const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+          // const assetsManager = new AssetsManager();
+          // assetsManager.useDefaultLoadingScreen = false;
+          var starPool = [];
+          var backgroundStars = [];
+          var density = 1000;
+          var starAmount = 100;
+          var checkTime = new Date();
+          var timeCycle = 10;
+          var cameraPOS = new BABYLON.Vector3(0, 0,-10);
+          var ambientColor = new BABYLON.Color3(RandomColor(), RandomColor(), RandomColor());
+          var light;
+
+          setInterval(function(){console.log("second");},1000);
+
+          // Add your code here matching the playground format
+
+          setTimeout(function(){
+            const scene = createScene(); //Call the createScene function
+
+            // Register a render loop to repeatedly render the scene
+            engine.runRenderLoop(function () {
+                    scene.render();
+            });
+
+            scene.registerBeforeRender(function(){
+                var currTime = new Date();
+                var sLength = starPool.length;
+                if(sLength !== density){
+                    for(var i = 0; i < density - sLength; i+=1){
+                        // Create a built-in "sphere" shape.
+                        var star = BuildStar(false, scene);
+                        starPool.push(star);
+                    }
+                }
+
+                var newStars = [];
+                for(var i = 0; i < starPool.length; i+=1){
+                    // if(i===0){
+                    //     console.log(starPool[i]._children[0].material);
+                    // }
+                    starPool[i].time += .60;
+                    // starPool[i]._children[0].material.setFloat("time", stars[i].time);
+
+                    if(starPool[i].position.z > 200){
+                        starPool[i].position.z += -.08;
+                    } else if (starPool[i].position.z > 100){
+                        starPool[i].position.z += -.12;
+                    } else if (starPool[i].position.z > 20){
+                        starPool[i].position.z += -.15;
+                    } else {
+                        starPool[i].position.z += -.18;
+                    }
+
+                    if(starPool[i].position.z < -10){
+                        starPool[i].dispose();
+                        continue;
+                    }
+                    newStars.push(starPool[i]);
+                }
+                starPool = newStars;
+
+                //Need to add Color lerping
+                if((currTime.getTime() - checkTime.getTime()) / 1000 > timeCycle){
+                    ambientColor = new BABYLON.Color3(RandomColor(), RandomColor(), RandomColor());
+                    checkTime = currTime;
+                }
+                scene.fogColor = BABYLON.Color3.Lerp(scene.fogColor, ambientColor, 0.0025);
+                light.diffuse = BABYLON.Color3.Lerp(light.diffuse, ambientColor, 0.0025);
+            });
+
+          }, 4000);
+
+
+
+          function createScene(){
+            const scene = new BABYLON.Scene(engine);
+            scene.clearColor = new BABYLON.Color3(.1,.1,.1);
+            scene.autoClear = true
+            // Parameters : name, position, scene
+            var camera = new BABYLON.UniversalCamera("UniversalCamera", cameraPOS, scene);
+
+            // Targets the camera to a particular position. In this case the scene origin
+            camera.setTarget(BABYLON.Vector3.Zero());
+
+            light = new BABYLON.HemisphericLight('main_light', new BABYLON.Vector3(0,0,-35), scene);
+            light.diffuse = ambientColor;
+            light.groundColor = new BABYLON.Color3(0, 0, 0);
+
+            for(var i = 0; i < density; i+=1){
+                // Create a built-in "sphere" shape.
+                var star = BuildBackgroundStar();
+                backgroundStars.push(star);
+            }
+
+            for(var i = 0; i < density; i+=1){
+                // Create a built-in "sphere" shape.
+                var star = BuildStar(true, scene);
+                starPool.push(star);
+            }
+
+            return scene;
+          }
+
+
+
+
+
+
+          function RandomNumberBetween(max){
+              return Math.random() * (max - -max + 1) + -max;
+          }
+
+          function RandomHeightDisplacement(max){
+              let runs = 5;
+              let hmap = 0;
+              for(var i = 0; i < runs; i+=1){
+                  hmap += RandomNumberBetween(max);
+              }
+              return hmap / runs;
+          }
+
+          function RandomDepth(){
+              return Math.random() * (500 - 10 + 1) + 10;
+          }
+
+          function RandomColor(){
+              return Math.random();
+          }
+
+          function BuildStar(initial, scene){
+              var starBuffer = 200
+              var starObject = new BABYLON.Mesh("dummy", scene);
+              var star = BABYLON.MeshBuilder.CreateDisc("disc", {
+                      radius: 0.25
+                  }, scene);
+              starObject._color = new BABYLON.Vector3(RandomColor(), RandomColor(), RandomColor())
+              // Move the sphere upward 1/2 of its height.
+              if(initial){
+                  var starPos = new BABYLON.Vector3(RandomNumberBetween($('body').width()/3), RandomNumberBetween(($('body').height() + starBuffer * 2) / 10), RandomDepth());
+              } else {
+                  var starPos = new BABYLON.Vector3(RandomNumberBetween($('body').width()/3), RandomNumberBetween(($('body').height() + starBuffer * 2) / 10), 500);
+              }
+              // star.material = new BABYLON.ShaderMaterial("star_mat_" + Math.random(), scene, {
+              //         vertexElement: "vertexShaderCode",
+              //         fragmentElement: "fragmentShaderCode",
+              //     },
+              //     {
+              //         attributes: ["position", "normal", "uv", "time", "color"],
+              //         uniforms: ["world", "worldView", "worldViewProjection", "view", "projection"]
+              // });
+              starObject.time = starPos.z;
+              // star.material.setFloat("time", starObject.time);
+              // star.material.setVector3("color", starObject._color);
+              //star.material = new BABYLON.StandardMaterial("star_mat_" + Math.random(), scene)
+              //star.material.diffuseColor = color;
+              starObject.position = starPos;
+              starObject.addChild(star);
+
+              star.position = new BABYLON.Vector3.Zero;
+              starObject.billboardMode = BABYLON.Mesh.BILLBOARDMODE_ALL;
+              return starObject;
+          }
+
+          function BuildBackgroundStar(scene){
+              var starBuffer = 200
+              var starObject = new BABYLON.Mesh("dummy", scene);
+              var star = BABYLON.MeshBuilder.CreateDisc("disc", {
+                      radius: 0.25
+                  }, scene);
+              var color = new BABYLON.Color3(RandomColor(), RandomColor(), RandomColor())
+              //Need to build better random displacement for height
+              var starPos = new BABYLON.Vector3(RandomNumberBetween(($('body').width())), RandomHeightDisplacement(($('body').height() / 100 + starBuffer * 2) / 20), 500);
+              star.material = new BABYLON.StandardMaterial("star_mat_" + Math.random(), scene)
+              star.material.diffuseColor = color;
+              starObject.position = starPos;
+              starObject.addChild(star);
+
+              star.position = new BABYLON.Vector3.Zero;
+              starObject.billboardMode = BABYLON.Mesh.BILLBOARDMODE_ALL;
+              return starObject;
+          }
+
+
+          // Watch for browser/canvas resize events
+          window.addEventListener("resize", function () {
+                  engine.resize();
+          });
+
+        });
+      })($)
+    </script>
+</body>
+</html>
