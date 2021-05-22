@@ -72,14 +72,24 @@ setTimeout(function(){
       scene.fogColor = BABYLON.Color3.Lerp(scene.fogColor, ambientColor, 0.0025);
       light.diffuse = BABYLON.Color3.Lerp(light.diffuse, ambientColor, 0.0025);
 
+
+
+      // Need to fine tune this...
+      if(currentSystem.position.z > 350000){
+          currentSystem.position.z += step * 3;
+      } else if (currentSystem.position.z > 200000){
+          currentSystem.position.z += step * 1.5;
+      } else if (currentSystem.position.z > 50000){
+          currentSystem.position.z += step;
+      } else {
+          currentSystem.position.z += step / 2;
+      }
       if(currentSystem.position.z <= -cloudSize - 300 ){
         // step *= -1;
         currentSystem.dispose();
         currentSystem = GetSystem(scene);
       }
 
-
-      currentSystem.position.z += step;
   });
 
 }, 4000);
@@ -205,7 +215,7 @@ function GetSystem(scene){
   let system = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
   system.position.x = getRandomArbitrary(-1000, 1000);//((Math.random() >= .5) ? 1 : -1) * getRandomArbitrary(500, 1000);
   system.position.y = getRandomArbitrary(-1000, 1000);
-  system.position.z = 500000;
+  system.position.z = 1035000;
 
   childSpheres = []
 
