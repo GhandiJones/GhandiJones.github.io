@@ -58,7 +58,7 @@ body {
   user-select: none;
   z-index: 100;
   animation: title_move 3s cubic-bezier(0.05, 0.98, 0.36, 1);
-  animation-delay: 11s;
+  animation-delay: 10s;
   animation-fill-mode: forwards;
 }
 
