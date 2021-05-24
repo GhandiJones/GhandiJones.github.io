@@ -95,21 +95,21 @@
       (function($){
         $(document).ready(function(){
 
-          if (screen.width > 719)
-          {
-            $(".screen-con").toggle();
+          // if (screen.width > 719)
+          // {
+          $(".screen-con").toggle();
 
-            $('.title-hdr').click(function(){
-              $('.title-icons-con').slideToggle("slow", function(){});
-            });
+          $('.title-hdr').click(function(){
+            $('.title-icons-con').slideToggle("slow", function(){});
+          });
 
-            let js = document.createElement("script");
-            js.type = "text/javascript";
-            js.src = "public/js/background.js";
-            $("body").append(js);
-          } else {
-            $(".mobile-con").toggle();
-          }
+          let js = document.createElement("script");
+          js.type = "text/javascript";
+          js.src = "public/js/background.js";
+          $("body").append(js);
+          // } else {
+          //   $(".mobile-con").toggle();
+          // }
 
         });
       })($)
