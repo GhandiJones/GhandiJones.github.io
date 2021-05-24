@@ -57,3 +57,13 @@
   background-color: #191919;
   z-index: -500;
 }
+
+.version-con{
+  position: absolute;
+  display: inline-block;
+  left: 10px;
+  bottom: 4px;
+  color: white;
+  font-family: 'Shadows Into Light', cursive;
+  font-size: medium;
+}
