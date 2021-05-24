@@ -9,9 +9,11 @@
 <meta charset="UTF-8">
 <meta name="description" content="" />
 <meta name="keywords" content="" />
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css" />
 <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
 <!--[if lte IE 8]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>![endif]-->
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -22,6 +24,11 @@
 <link rel="stylesheet" href="/public/css/desktop.css" type="text/css" />
 <link rel="stylesheet" href="/public/css/mobile.css" type="text/css" />
 <link rel="stylesheet" href="/public/css/no-script.css" type="text/css" />
+<style>
+
+
+
+</style>
 
 </head>
 <body>
@@ -50,6 +57,7 @@
               </div>
             </div>
         </span>
+        <span class="version-con">v0.04</span>
         <div class="screen-cover"><span>Loading...</span></div>
         <canvas id="screen" touch-action="none"></canvas>
       </div>
@@ -95,13 +103,10 @@
               $('.title-icons-con').slideToggle("slow", function(){});
             });
 
-                //Move Babylonjs files addendum to here
-                  
             let js = document.createElement("script");
             js.type = "text/javascript";
             js.src = "public/js/background.js";
             $("body").append(js);
-                  
           } else {
             $(".mobile-con").toggle();
           }
