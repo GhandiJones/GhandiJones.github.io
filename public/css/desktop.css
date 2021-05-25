@@ -54,7 +54,6 @@
   width: 100vw;
   height: 100vh;
   touch-action: none;
-  background-color: #191919;
   z-index: -500;
 }
 
