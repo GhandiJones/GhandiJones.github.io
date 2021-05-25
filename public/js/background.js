@@ -20,6 +20,9 @@ var dirLerpTime;
 var dirLerpCount;
 var isDirectionalLerping = false;
 
+var mouseVec = new BABYLON.Vector3();
+var mousePos = new BABYLON.Vector3(2000,2000,0);
+
 const canvas = document.getElementById("screen"); // Get the canvas element
 const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
 
@@ -113,6 +116,8 @@ scene.registerBeforeRender(function(){
     }
   }
 
+
+
   // currentSystem.position.x = 5 * Math.cos(engine.getDeltaTime());
   // currentSystem.position.y = 5 * Math.sin(engine.getDeltaTime());
 
@@ -156,6 +161,19 @@ function createScene() {
   light.range = 500000;
   light.intensity = .7;
 
+  window.addEventListener("mousemove", function (event) {
+      event.preventDefault();
+      mouseVec.set((event.clientX / engine.getRenderWidth()), (event.clientY / engine.getRenderHeight()), 0.5);
+      //console.log(mouseVec);
+      let uvec = BABYLON.Vector3.Unproject(mouseVec, 1, 1, BABYLON.Matrix.Identity(), camera.getViewMatrix(), camera.getProjectionMatrix());
+      var dir = uvec.subtract(camera.position).normalize();
+      var distance = -camera.position.z / dir.z;
+      var pos = camera.position.clone().add(dir.scale(distance));
+
+      mousePos = pos;
+      //console.log(mousePos,BABYLON.Vector3.Distance(mousePos, systemBody.position));
+  });
+
   // Our built-in 'sphere' shape.
   currentSystem = GetSystem(scene);
 
@@ -198,8 +216,8 @@ particleSystem.colorDead = new BABYLON.Color4(0.1, 0.1, 0.1, 1);
 particleSystem.minSize = 0.01;
 particleSystem.maxSize = 0.5;
 
-particleSystem.addSizeGradient(0, 0.01); //size at start of particle lifetime
-particleSystem.addSizeGradient(0.01, 0.05); //size at end of particle lifetime
+particleSystem.addSizeGradient(0, 0.1); //size at start of particle lifetime
+particleSystem.addSizeGradient(0.1, 0.5); //size at end of particle lifetime
 
 // Life time of each particle (random between...
 particleSystem.minLifeTime = .5;
@@ -221,6 +239,61 @@ var sphereEmitter = particleSystem.createDirectedSphereEmitter(10, new BABYLON.V
 sphereEmitter.radiusRange = 0.8;
 directionStore.orig.dir1 = particleSystem.direction1;
 directionStore.orig.dir2 = particleSystem.direction2;
+
+let rate = 0.02;
+let range = 1.5;
+let rangeEasing = 3;
+
+particleSystem.updateFunction = function(particles) {
+     for (var index = 0; index < particles.length; index++) {
+           var particle = particles[index];
+           particle.age += this._scaledUpdateSpeed;
+
+           if (particle.age >= particle.lifeTime) { // Recycle
+                particles.splice(index, 1);
+                this._stockParticles.push(particle);
+                index--;
+                continue;
+           }
+           else {
+
+                particle.angle += particle.angularSpeed * this._scaledUpdateSpeed;
+
+                particle.direction.scaleToRef(this._scaledUpdateSpeed, this._scaledDirection);
+                particle.position.addInPlace(this._scaledDirection);
+
+                this.gravity.scaleToRef(this._scaledUpdateSpeed, this._scaledGravity);
+                particle.direction.addInPlace(this._scaledGravity);
+
+                let d = BABYLON.Vector3.Distance(mousePos, particle.position);
+                if(d <= range){
+                  // let mP = new BABYLON.Vector2(Math.sign(mousePos.x + Math.sign(systemBody.position.x)) * .01, Math.sign(mousePos.y + Math.sign(systemBody.position.y)) * .01);
+                  // systemBody.position.x += Math.sign(mousePos.x + Math.sign(systemBody.position.x)) * .01;
+                  // systemBody.position.y += Math.sign(mousePos.y + Math.sign(systemBody.position.y)) * .01;
+
+                  if(particle.position.x <= mousePos.x){
+                    particle.position.x += rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;                        }
+                  if(particle.position.x >= mousePos.x){
+                    particle.position.x += -rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
+                  }
+                  if(particle.position.y <= mousePos.y){
+                    particle.position.y += rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
+                  }
+                  if(particle.position.y >= mousePos.y){
+                    particle.position.y += -rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
+                  }
+                  if(particle.position.z <= mousePos.z){
+                    particle.position.z += rate * ((d + rangeEasing) / (range + rangeEasing)) * 10;
+                  }
+                  if(particle.position.z >= mousePos.z){
+                    particle.position.z += -rate * ((d + rangeEasing) / (range + rangeEasing)) * 10;
+                  }
+                }
+
+           }
+     }
+}
+
 // Speed
 particleSystem.minEmitPower = .025;
 particleSystem.maxEmitPower = .5;
@@ -236,6 +309,7 @@ noiseTexture.octaves = 5;
 
 particleSystem.noiseTexture = noiseTexture;
 particleSystem.noiseStrength = new BABYLON.Vector3(0, 0, -2);
+
 
 particleSystem.preWarmCycles = 100;
 particleSystem.preWarmStepOffset = 5;
