@@ -15,7 +15,8 @@ body {
     justify-content: center;
     -webkit-box-align: center;
     -webkit-box-pack: center;
-    background: #191919;
+    background-color: #191919;
+    background-image: radial-gradient(circle, #292929 75%, #191919 100%)
     overflow: hidden;
 }
 
