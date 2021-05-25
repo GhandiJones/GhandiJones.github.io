@@ -204,6 +204,7 @@
       // particleSystem.maxEmitBox = new BABYLON.Vector3(6, .04, 0);
       // particleSystem.createSphereEmitter(6);
       var sphereEmitter = particleSystem.createDirectedSphereEmitter(6, new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(0, 0, -10));
+      sphereEmitter.radiusRange = 1;
       directionStore.orig.dir1 = particleSystem.direction1;
       directionStore.orig.dir2 = particleSystem.direction2;
       // Speed
