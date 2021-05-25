@@ -57,7 +57,7 @@
               </div>
             </div>
         </span>
-        <span class="version-con">v0.04</span>
+        <span class="version-con"></span>
         <div class="screen-cover"><span>Loading...</span></div>
         <canvas id="screen" touch-action="none"></canvas>
       </div>
@@ -94,6 +94,8 @@
     <script>
       (function($){
         $(document).ready(function(){
+          const _VERSION = "v0.05";
+          $(".version-con").text(_VERSION);
 
           // if (screen.width > 719)
           // {
