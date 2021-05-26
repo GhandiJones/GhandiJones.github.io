@@ -243,7 +243,7 @@
 
       let rate = 0.001;//0.01;
       let range = 2.5;
-      let rangeEasing = 3;
+      let rangeEasing = 5000;
 
       particleSystem.updateFunction = function(particles) {
            for (var index = 0; index < particles.length; index++) {
@@ -274,34 +274,36 @@
 
                           let totalPOS = new BABYLON.Vector3(particle.position.x, particle.position.y, particle.position.z);
 
+                          let x = mousePos.x - particle.position.x;
+                          let y = mousePos.y - particle.position.y;
+                          let hypot = Math.hypot(x, y);
                           if(particle.position.x <= mousePos.x){
-                            // particle.position.x += rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
-                            totalPOS.x += rate * (1 - (d / range));
+                            totalPOS.x += rate * (1 - (d / range) + x/hypot);// - Math.sin(Math.PI) / rangeEasing;
                           }
                           if(particle.position.x >= mousePos.x){
-                            // particle.position.x += -rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
-                            totalPOS.x += -rate * (1 - (d / range));
+                            totalPOS.x += -rate * (1 - (d / range) - x/hypot);// + Math.sin(Math.PI) / rangeEasing;
                           }
                           if(particle.position.y <= mousePos.y){
-                            // particle.position.y += rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
-                            totalPOS.y += rate * (1 - (d / range));
+                            totalPOS.y += rate * (1 - (d / range) + y/hypot);
                           }
                           if(particle.position.y >= mousePos.y){
-                            // particle.position.y += -rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
-                            totalPOS.y += -rate * (1 - (d / range));
+                            totalPOS.y += -rate * (1 - (d / range) - y/hypot);
                           }
                           if(particle.position.z <= mousePos.z){
-                            // particle.position.z += rate * ((d + rangeEasing) / (range + rangeEasing)) * 10;
-                            totalPOS.z += rate * (1 - (d / range));// * ((d + rangeEasing) / (range + rangeEasing)) * 10;
+                            totalPOS.z += rate * (1 - (d / range)) * 5;// - Math.cos(Math.PI) / rangeEasing;// * ((d + rangeEasing) / (range + rangeEasing)) * 10;
                           }
                           if(particle.position.z >= mousePos.z){
-                            // particle.position.z += -rate * ((d + rangeEasing) / (range + rangeEasing)) * 10;
-                            totalPOS.z += -rate * (1 - (d / range));// * ((d + rangeEasing) / (range + rangeEasing)) * 10;
+                            totalPOS.z += -rate * (1 - (d / range)) * 5;// + Math.cos(Math.PI) / rangeEasing;// * ((d + rangeEasing) / (range + rangeEasing)) * 10;
                           }
 
+                          //totalPOS.addInPlace(x/hypot, y/hypot, 0);
 
+                          //totalPOS.addInPlace(new BABYLON.Vector3(Math.sin(Math.PI)/1, 0, Math.cos(Math.PI)/1));
+                          //particle.direction.addInPlace(totalPOS.normalize());
 
                           particle.position = BABYLON.Vector3.Lerp(particle.position, totalPOS, engine.getDeltaTime());
+                          particle.direction.scaleToRef(totalPOS.add(particle.position.subtract(totalPOS).scale(.5)).length(), this._scaledDirection);
+                          particle.direction.addInPlace(particle.position.subtract(totalPOS).scale(.5));
 
                           // if(particle.position.x <= mousePos.x){
                           //   // particle.position.x += rate * ((d + rangeEasing) / (range + rangeEasing)) * 2;
